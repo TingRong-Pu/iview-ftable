@@ -61,6 +61,3 @@
         </f-table-column>
     </f-table>
 ```
-## demo
-
-[here](https://codesandbox.io/s/km1ry8zrp7)
