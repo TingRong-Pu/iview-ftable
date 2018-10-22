@@ -26,37 +26,41 @@
       </RadioGroup>
     </p>
 
-
-    <f-table :data="tabledata" v-bind="fTableOptions" @on-row-click="onRowClick">
-      <f-table-column type="expand" :width="60" align="center">
+    <f-table :data="tabledata" v-bind="fTableOptions" @on-row-click="onRowClick" width="1000">
+      <f-table-column type="expand" :width="100" align="center" fixed='left'>
         <template slot-scope="scope">
-             展开
+          展开
         </template>
       </f-table-column>
-      <f-table-column type="selection" :width="60" align="center"></f-table-column>
-      <f-table-column title="Age" prop="age" :filters="[{label: 'Greater than 25',value: 1}]" :filterMethod="()=>(true) "></f-table-column>
-      <f-table-column title="Address" prop="address"></f-table-column>
-      <f-table-column title="Date" prop="date"></f-table-column>
-      <f-table-column title="Action">
+      <f-table-column type="selection" :width="100" align="center" v-if="fTableOptions.border"></f-table-column>
+      <f-table-column title="Age" :width="200" prop="age" :filters="[{label: 'Greater than 25',value: 1}]" :filterMethod="()=>(true) "></f-table-column>
+      <f-table-column title="Province" :width="200" prop="province"></f-table-column>
+      <f-table-column title="City" :width="200" prop="city"></f-table-column>
+      <f-table-column title="Postcode" :width="200" prop="zip"></f-table-column>
+      <f-table-column title="Address" :width="200" prop="address"></f-table-column>
+      <f-table-column title="Date" :width="200" prop="date"></f-table-column>
+      <f-table-column title="Action" :width="300" fixed='right'>
         <template slot-scope="scope">
           <Button type="primary" @click="$Modal.info({
-                  title: '提示',
-                  content: `查看 ${scope.name} 的信息`
-              })">查看</Button>
+                    title: '提示',
+                    content: `查看 ${scope.name} 的信息`
+                })">查看</Button>
           <Button type="warning" @click="$Modal.warning({
-                  title: '提示',
-                  content: `点击编辑 ${scope.name} 的信息`
-              })">编辑</Button>
+                    title: '提示',
+                    content: `点击编辑 ${scope.name} 的信息`
+                })">编辑</Button>
           <Button type="error" @click="$Modal.error({
-                  title: '警告',
-                  content: `确定要删除用户： ${scope.name} ？`
-              })">删除</Button>
+                    title: '警告',
+                    content: `确定要删除用户： ${scope.name} ？`
+                })">删除</Button>
         </template>
       </f-table-column>
     </f-table>
+    <Page
+    :total = 20
+    :page-size = '10'>
 
-
-
+    </Page>
   </div>
 </template>
 
@@ -86,25 +90,178 @@ export default {
                     name: "John Brown",
                     age: 18,
                     address: "New York No. 1 Lake Park",
-                    date: "2016-10-03"
+                    province: "America",
+                    city: "New York",
+                    date: '2016-10-02',
+                    zip: 100000
                 },
                 {
                     name: "Jim Green",
                     age: 24,
-                    address: "London No. 1 Lake Park",
-                    date: "2016-10-01"
+                    address: "Washington, D.C. No. 1 Lake Park",
+                    province: "America",
+                    city: "Washington, D.C.",
+                    date: '2016-10-02',
+                    zip: 100000
                 },
                 {
                     name: "Joe Black",
                     age: 30,
                     address: "Sydney No. 1 Lake Park",
-                    date: "2016-10-02"
+                    province: "Australian",
+                    city: "Sydney",
+                    date: '2016-10-02',
+                    zip: 100000
                 },
                 {
                     name: "Jon Snow",
                     age: 26,
                     address: "Ottawa No. 2 Lake Park",
-                    date: "2016-10-04"
+                    province: "Canada",
+                    city: "Ottawa",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "John Brown",
+                    age: 18,
+                    address: "New York No. 1 Lake Park",
+                    province: "America",
+                    city: "New York",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jim Green",
+                    age: 24,
+                    address: "Washington, D.C. No. 1 Lake Park",
+                    province: "America",
+                    city: "Washington, D.C.",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Joe Black",
+                    age: 30,
+                    address: "Sydney No. 1 Lake Park",
+                    province: "Australian",
+                    city: "Sydney",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jon Snow",
+                    age: 26,
+                    address: "Ottawa No. 2 Lake Park",
+                    province: "Canada",
+                    city: "Ottawa",
+                    date: '2016-10-02',
+                    zip: 100000
+                },{
+                    name: "John Brown",
+                    age: 18,
+                    address: "New York No. 1 Lake Park",
+                    province: "America",
+                    city: "New York",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jim Green",
+                    age: 24,
+                    address: "Washington, D.C. No. 1 Lake Park",
+                    province: "America",
+                    city: "Washington, D.C.",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Joe Black",
+                    age: 30,
+                    address: "Sydney No. 1 Lake Park",
+                    province: "Australian",
+                    city: "Sydney",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jon Snow",
+                    age: 26,
+                    address: "Ottawa No. 2 Lake Park",
+                    province: "Canada",
+                    city: "Ottawa",
+                    date: '2016-10-02',
+                    zip: 100000
+                },{
+                    name: "John Brown",
+                    age: 18,
+                    address: "New York No. 1 Lake Park",
+                    province: "America",
+                    city: "New York",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jim Green",
+                    age: 24,
+                    address: "Washington, D.C. No. 1 Lake Park",
+                    province: "America",
+                    city: "Washington, D.C.",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Joe Black",
+                    age: 30,
+                    address: "Sydney No. 1 Lake Park",
+                    province: "Australian",
+                    city: "Sydney",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jon Snow",
+                    age: 26,
+                    address: "Ottawa No. 2 Lake Park",
+                    province: "Canada",
+                    city: "Ottawa",
+                    date: '2016-10-02',
+                    zip: 100000
+                },{
+                    name: "John Brown",
+                    age: 18,
+                    address: "New York No. 1 Lake Park",
+                    province: "America",
+                    city: "New York",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jim Green",
+                    age: 24,
+                    address: "Washington, D.C. No. 1 Lake Park",
+                    province: "America",
+                    city: "Washington, D.C.",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Joe Black",
+                    age: 30,
+                    address: "Sydney No. 1 Lake Park",
+                    province: "Australian",
+                    city: "Sydney",
+                    date: '2016-10-02',
+                    zip: 100000
+                },
+                {
+                    name: "Jon Snow",
+                    age: 26,
+                    address: "Ottawa No. 2 Lake Park",
+                    province: "Canada",
+                    city: "Ottawa",
+                    date: '2016-10-02',
+                    zip: 100000
                 }
             ]
         };

@@ -3,23 +3,29 @@
 </template>
 <script>
 export default {
-  props:{
-    type:String,
-    title:String,
-    prop:String,
-    width:Number,
-    align:String,
-    className:String,
-    fixed:String,
-    ellipsis:Boolean,
-    sortable:Boolean,
-    sortMethod:Function,
-    sortType:String,
-    filters:Array,
-    filterMethod:Function,
-    filterMultiple:Boolean,
-    filteredValue:Array,
-    filterRemote:Boolean
+  inject: [
+    'updateTable'
+  ],
+  props: {
+    type: String,
+    title: String,
+    prop: String,
+    width: Number,
+    align: String,
+    className: String,
+    fixed: String,
+    ellipsis: Boolean,
+    sortable: Boolean,
+    sortMethod: Function,
+    sortType: String,
+    filters: Array,
+    filterMethod: Function,
+    filterMultiple: Boolean,
+    filteredValue: Array,
+    filterRemote: Boolean
+  },
+  beforeUpdate () {
+    this.updateTable()
   }
 }
 </script>
